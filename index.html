@@ -4,236 +4,549 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gbekor SHS LMS</title>
+<title>Gbekor SHS Learning Portal</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+:root {
+    --wine: #8b1235;
+    --wine-light: #b52a52;
+    --gold: #d9a52b;
+    --dark: #20242b;
+    --gray: #6b7280;
+    --bg: #f4f6f9;
+    --white: #ffffff;
+}
 
-    body {
-        font-family: Arial, sans-serif;
-        background: #f5f6fa;
-        color: #222;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    header {
-        background: #8b1235;
-        color: white;
-        padding: 20px 8%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+}
 
-    .logo {
+/* TOP BAR */
+header {
+    height: 75px;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo-area {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.logo img {
+.logo-area img {
     width: 55px;
     height: 55px;
     object-fit: cover;
     border-radius: 50%;
-    background: white;
-    padding: 3px;
 }
-    .logo h1 {
-        font-size: 22px;
-    }
 
-    .logo p {
-        font-size: 12px;
-        opacity: 0.9;
-    }
+.school-name {
+    color: var(--wine);
+    font-weight: bold;
+    font-size: 18px;
+}
 
-    .login {
-        background: white;
-        color: #8b1235;
-        border: none;
-        padding: 10px 22px;
-        border-radius: 6px;
-        font-weight: bold;
-        cursor: pointer;
+.school-subtitle {
+    color: var(--gray);
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.login-btn {
+    margin-left: auto;
+    background: var(--wine);
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, var(--wine), var(--wine-light));
+    color: white;
+    padding: 70px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 650px;
+}
+
+.hero button {
+    margin-top: 25px;
+    background: white;
+    color: var(--wine);
+    border: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hero-icon {
+    font-size: 100px;
+    opacity: 0.3;
+}
+
+/* MAIN CONTENT */
+.container {
+    padding: 40px 8%;
+}
+
+.section-title {
+    color: var(--wine);
+    margin-bottom: 25px;
+}
+
+/* FEATURE CARDS */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.card-icon {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    color: var(--wine);
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--gray);
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* COURSE CARD */
+.course {
+    margin-top: 40px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.course-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress {
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 65%;
+    height: 100%;
+    background: var(--wine);
+}
+
+.continue-btn {
+    margin-top: 18px;
+    background: var(--wine);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+/* DASHBOARD PREVIEW */
+.dashboard {
+    margin-top: 40px;
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stat {
+    background: #f8f9fb;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--wine);
+}
+
+.stat-label {
+    font-size: 13px;
+    color: var(--gray);
+}
+
+/* FOOTER */
+footer {
+    margin-top: 50px;
+    background: #1f2937;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+/* MOBILE */
+@media(max-width: 900px) {
+    .features,
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .hero {
-        padding: 70px 8%;
-        background: linear-gradient(135deg, #8b1235, #bd3158);
-        color: white;
+        flex-direction: column;
         text-align: center;
     }
 
-    .hero h2 {
-        font-size: 42px;
-        margin-bottom: 15px;
-    }
-
-    .hero p {
-        font-size: 18px;
-        max-width: 700px;
-        margin: auto;
-        line-height: 1.6;
-    }
-
-    .hero button {
-        margin-top: 25px;
-        padding: 14px 30px;
-        background: white;
-        color: #8b1235;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    .content {
-        padding: 50px 8%;
-    }
-
-    .content h2 {
-        text-align: center;
-        color: #8b1235;
-        margin-bottom: 35px;
-    }
-
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-        gap: 20px;
-    }
-
-    .card {
-        background: white;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
-
-    .card h3 {
-        color: #8b1235;
-        margin-bottom: 12px;
-    }
-
-    .card p {
-        color: #666;
-        line-height: 1.6;
-    }
-
-    footer {
-        background: #1f1f1f;
-        color: white;
-        text-align: center;
-        padding: 25px;
+    .hero-icon {
         margin-top: 30px;
     }
+}
 
-    @media (max-width: 600px) {
-        header {
-            padding: 15px 5%;
-        }
-
-        .hero {
-            padding: 50px 5%;
-        }
-
-        .hero h2 {
-            font-size: 30px;
-        }
-
-        .content {
-            padding: 40px 5%;
-        }
+@media(max-width: 600px) {
+    header {
+        padding: 0 15px;
     }
+
+    .school-name {
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 50px 7%;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .features,
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 30px 5%;
+    }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-   <div class="logo">
-    <img src="gbekor-logo.jpg" alt="Gbekor Senior High School Logo">
 
-    <div>
-        <h1>GBEKOR SENIOR HIGH SCHOOL</h1>
-        <p>ONLINE LEARNING MANAGEMENT SYSTEM</p>
+    <div class="logo-area">
+
+        <img src="gbekor-logo.jpg"
+             alt="Gbekor Senior High School Logo">
+
+        <div>
+            <div class="school-name">
+                GBEKOR SENIOR HIGH SCHOOL
+            </div>
+
+            <div class="school-subtitle">
+                ONLINE LEARNING MANAGEMENT SYSTEM
+            </div>
+        </div>
+
     </div>
-</div>
 
-    <button class="login">Login</button>
+    <button class="login-btn" onclick="login()">
+        Login
+    </button>
+
 </header>
 
+
 <section class="hero">
-    <h2>Learn Anywhere. Learn Anytime.</h2>
 
-    <p>
-        Welcome to the Gbekor Senior High School Learning Management System.
-        Access your courses, complete lessons and assessments, and track your learning progress online.
-    </p>
+    <div>
 
-    <button>Explore Courses</button>
-</section>
+        <h1>Learn Anywhere.<br>Learn Anytime.</h1>
 
-<section class="content">
+        <p>
+            Welcome to the Gbekor Senior High School Learning
+            Management System. Access your lessons, complete
+            assessments and track your learning progress online.
+        </p>
 
-    <h2>Learning Portal Features</h2>
+        <button onclick="exploreCourses()">
+            Explore Courses
+        </button>
 
-    <div class="cards">
+    </div>
 
-        <div class="card">
-            <h3>📚 My Courses</h3>
-            <p>
-                Access learning materials, lessons and activities from anywhere.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>📝 Online Quizzes</h3>
-            <p>
-                Complete quizzes and receive marks and feedback.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>📊 Progress Tracking</h3>
-            <p>
-                Track course completion, grades and learning progress.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>👨‍🏫 Teacher Monitoring</h3>
-            <p>
-                Teachers can monitor student progress, grades and course completion.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>🏆 Certificates</h3>
-            <p>
-                Earn certificates after successfully completing courses.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>📱 Learn Anywhere</h3>
-            <p>
-                Study from home, school or any location using your computer or mobile device.
-            </p>
-        </div>
-
+    <div class="hero-icon">
+        🎓
     </div>
 
 </section>
 
+
+<div class="container">
+
+    <h2 class="section-title">
+        Everything You Need to Learn Online
+    </h2>
+
+
+    <div class="features">
+
+        <div class="card">
+
+            <div class="card-icon">📚</div>
+
+            <h3>My Courses</h3>
+
+            <p>
+                Access your lessons and learning materials
+                from anywhere.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">📝</div>
+
+            <h3>Online Quizzes</h3>
+
+            <p>
+                Take assessments and receive your marks
+                and feedback online.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">📊</div>
+
+            <h3>Track Progress</h3>
+
+            <p>
+                Monitor your course completion and
+                academic progress.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">🏆</div>
+
+            <h3>Certificates</h3>
+
+            <p>
+                Earn certificates after successfully
+                completing your courses.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="course">
+
+        <div class="course-top">
+
+            <div>
+
+                <h2>
+                    Word Processing Essentials
+                </h2>
+
+                <p>
+                    Save • Format • Insert Table • Print/Export
+                </p>
+
+            </div>
+
+            <div>
+                65% Complete
+            </div>
+
+        </div>
+
+
+        <div class="progress">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+
+        <button class="continue-btn"
+                onclick="continueLearning()">
+
+            Continue Learning
+
+        </button>
+
+    </div>
+
+
+    <div class="dashboard">
+
+        <h2>
+            Learning Dashboard
+        </h2>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    1
+                </div>
+
+                <div class="stat-label">
+                    Active Course
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    65%
+                </div>
+
+                <div class="stat-label">
+                    Course Progress
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    82%
+                </div>
+
+                <div class="stat-label">
+                    Quiz Average
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-number">
+                    0
+                </div>
+
+                <div class="stat-label">
+                    Certificates
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <footer>
-    <p>© 2026 Gbekor Senior High School | Learning Management System</p>
+
+    <p>
+        © 2026 Gbekor Senior High School
+    </p>
+
+    <p>
+        Online Learning Management System
+    </p>
+
 </footer>
+
+
+<script>
+
+function login() {
+
+    alert(
+        "Student and Teacher Login will be connected to the LMS database."
+    );
+
+}
+
+
+function exploreCourses() {
+
+    alert(
+        "Courses will appear here."
+    );
+
+}
+
+
+function continueLearning() {
+
+    alert(
+        "Opening Word Processing Essentials..."
+    );
+
+}
+
+</script>
 
 </body>
 </html>
