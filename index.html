@@ -29,11 +29,19 @@
     }
 
     .logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
+.logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: white;
+    padding: 3px;
+}
     .logo h1 {
         font-size: 22px;
     }
@@ -148,12 +156,14 @@
 <body>
 
 <header>
-    <div class="logo">
-        <div>
-            <h1>GBEKOR SENIOR HIGH SCHOOL</h1>
-            <p>ONLINE LEARNING MANAGEMENT SYSTEM</p>
-        </div>
+   <div class="logo">
+    <img src="gbekor-logo.jpg" alt="Gbekor Senior High School Logo">
+
+    <div>
+        <h1>GBEKOR SENIOR HIGH SCHOOL</h1>
+        <p>ONLINE LEARNING MANAGEMENT SYSTEM</p>
     </div>
+</div>
 
     <button class="login">Login</button>
 </header>
