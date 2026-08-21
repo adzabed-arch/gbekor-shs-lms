@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gbekor SHS LMS</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f6fa;
+        color: #222;
+    }
+
+    header {
+        background: #8b1235;
+        color: white;
+        padding: 20px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .logo h1 {
+        font-size: 22px;
+    }
+
+    .logo p {
+        font-size: 12px;
+        opacity: 0.9;
+    }
+
+    .login {
+        background: white;
+        color: #8b1235;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .hero {
+        padding: 70px 8%;
+        background: linear-gradient(135deg, #8b1235, #bd3158);
+        color: white;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        max-width: 700px;
+        margin: auto;
+        line-height: 1.6;
+    }
+
+    .hero button {
+        margin-top: 25px;
+        padding: 14px 30px;
+        background: white;
+        color: #8b1235;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .content {
+        padding: 50px 8%;
+    }
+
+    .content h2 {
+        text-align: center;
+        color: #8b1235;
+        margin-bottom: 35px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+        color: #8b1235;
+        margin-bottom: 12px;
+    }
+
+    .card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    footer {
+        background: #1f1f1f;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+        header {
+            padding: 15px 5%;
+        }
+
+        .hero {
+            padding: 50px 5%;
+        }
+
+        .hero h2 {
+            font-size: 30px;
+        }
+
+        .content {
+            padding: 40px 5%;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <div>
+            <h1>GBEKOR SENIOR HIGH SCHOOL</h1>
+            <p>ONLINE LEARNING MANAGEMENT SYSTEM</p>
+        </div>
+    </div>
+
+    <button class="login">Login</button>
+</header>
+
+<section class="hero">
+    <h2>Learn Anywhere. Learn Anytime.</h2>
+
+    <p>
+        Welcome to the Gbekor Senior High School Learning Management System.
+        Access your courses, complete lessons and assessments, and track your learning progress online.
+    </p>
+
+    <button>Explore Courses</button>
+</section>
+
+<section class="content">
+
+    <h2>Learning Portal Features</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>📚 My Courses</h3>
+            <p>
+                Access learning materials, lessons and activities from anywhere.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📝 Online Quizzes</h3>
+            <p>
+                Complete quizzes and receive marks and feedback.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📊 Progress Tracking</h3>
+            <p>
+                Track course completion, grades and learning progress.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>👨‍🏫 Teacher Monitoring</h3>
+            <p>
+                Teachers can monitor student progress, grades and course completion.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🏆 Certificates</h3>
+            <p>
+                Earn certificates after successfully completing courses.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>📱 Learn Anywhere</h3>
+            <p>
+                Study from home, school or any location using your computer or mobile device.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Gbekor Senior High School | Learning Management System</p>
+</footer>
+
+</body>
+</html>
