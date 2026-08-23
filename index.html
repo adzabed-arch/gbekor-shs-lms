@@ -1,50 +1,245 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#681329">
-  <title>Gbekor SHS Learning Portal</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gbekor SHS LMS</title>
+<style>
+:root{--primary:#681329;--primary2:#3f0918;--gold:#d3a544;--bg:#f5f1e8;--card:#fffdf9;--ink:#27211d;--muted:#746b62;--line:#e7ddcc;--green:#1f7653;--blue:#2865a5;--danger:#a42b3a;--shadow:0 8px 28px #3d27100e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px Arial,sans-serif}button,input,select,textarea{font:inherit}.hidden{display:none!important}
+#login{min-height:100vh;display:grid;place-items:center;padding:20px;background:linear-gradient(135deg,#3f0918,#681329)}
+.login-card{width:440px;max-width:100%;background:var(--card);padding:36px;border-radius:18px;box-shadow:0 30px 80px #0006}.seal{width:72px;height:72px;border:3px solid var(--gold);border-radius:50%;display:grid;place-items:center;margin:auto;color:var(--primary);font:bold 20px Georgia;background:#fff7e7}.login-card h1{text-align:center;margin:18px 0 5px}.login-card p{text-align:center;color:var(--muted)}label{display:block;font-size:12px;font-weight:bold;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}input,select,textarea{width:100%;border:1px solid var(--line);padding:12px;border-radius:9px;background:white}.btn{border:0;border-radius:9px;padding:11px 16px;background:var(--primary);color:#fff;cursor:pointer;font-weight:bold}.btn:hover{filter:brightness(1.08)}.btn.gold{background:var(--gold);color:#3f0918}.btn.light{background:#f2e9da;color:var(--primary)}.btn.danger{background:var(--danger)}.login-card .btn{width:100%;margin-top:20px}
+#portal{display:flex;min-height:100vh}.sidebar{width:255px;background:var(--primary2);color:#fff;padding:20px 14px;position:sticky;top:0;height:100vh}.brand{padding:10px 12px 24px;border-bottom:1px solid #ffffff22;margin-bottom:15px}.brand b{display:block;font:700 20px Georgia}.brand span{font-size:11px;letter-spacing:1.5px;color:#f0d58d}.nav{width:100%;border:0;background:transparent;color:#eadde0;padding:11px 13px;text-align:left;border-radius:8px;cursor:pointer;margin:2px 0}.nav:hover,.nav.active{background:#ffffff16;color:#fff}.nav.active{border-left:3px solid var(--gold);font-weight:bold}.userbox{position:absolute;bottom:18px;left:14px;right:14px;padding:12px;background:#ffffff12;border-radius:10px}.userbox small{color:#ddcbd0;display:block;margin-bottom:7px}.content{flex:1;padding:26px 32px;max-width:1400px}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.topbar h1{margin:0;font-family:Georgia,serif}.topbar .role{color:var(--muted);font-size:13px}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,1fr)}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}.stat strong{display:block;font:700 32px Georgia;color:var(--primary);margin:7px 0}.muted{color:var(--muted)}.hero{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;padding:28px;border-radius:16px;margin-bottom:18px}.hero h2{font:700 28px Georgia;margin:0 0 8px}.cols{grid-template-columns:1.45fr 1fr}.course{display:flex;gap:15px;align-items:center}.icon{width:52px;height:52px;border-radius:12px;background:#f3e4bd;display:grid;place-items:center;font-size:24px}.course h3{margin:0}.course p{margin:6px 0;color:var(--muted);font-size:13px}.progress{height:9px;background:#e9e1d3;border-radius:10px;overflow:hidden;margin-top:12px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--gold));border-radius:10px}.list{padding:0;margin:0;list-style:none}.list li{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}.badge{padding:4px 8px;border-radius:20px;font-size:11px;font-weight:bold;white-space:nowrap}.green{background:#dff1e8;color:var(--green)}.amber{background:#f8edd5;color:#96631a}.red{background:#f7e1e3;color:var(--danger)}.blue{background:#e2edf9;color:var(--blue)}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}th{font-size:11px;color:var(--muted);text-transform:uppercase}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.toolbar input{max-width:330px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.empty{text-align:center;padding:50px;color:var(--muted)}.quiz-option{display:block;padding:12px;border:1px solid var(--line);border-radius:9px;margin:8px 0;cursor:pointer}.quiz-option:hover{background:#faf3e4}.notice{padding:12px;border-left:4px solid var(--gold);background:#fff8e8;margin:10px 0}.certificate{border:8px double var(--gold);padding:42px;text-align:center;background:#fffaf0}.certificate h1{font:700 38px Georgia;color:var(--primary)}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.day{min-height:86px;padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff}.event{font-size:11px;background:#f3e4bd;color:var(--primary);padding:4px;border-radius:4px;margin-top:5px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.modal{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:20px;z-index:20}.modalbox{width:650px;max-width:100%;max-height:90vh;overflow:auto;background:var(--card);padding:24px;border-radius:14px}.toast{position:fixed;right:20px;bottom:20px;background:#263d32;color:#fff;padding:14px 18px;border-radius:9px;box-shadow:var(--shadow);z-index:30}
+@media(max-width:950px){.sidebar{width:220px}.stats{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}@media(max-width:680px){.sidebar{width:62px;padding:12px 6px}.brand b,.brand span,.nav .txt,.userbox{display:none}.content{padding:18px}.nav{text-align:center}.stats{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.topbar h1{font-size:23px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-  <main id="auth-screen" class="auth-shell">
-    <section class="auth-card">
-      <img class="school-seal" src="school-logo.jpg" alt="Gbekor Senior High School logo">
-      <h1>Gbekor SHS Learning Portal</h1>
-      <p>Adaklu · Volta Region</p>
-      <form id="sign-in-form">
-        <label for="email">Email address</label><input id="email" type="email" autocomplete="email" required placeholder="you@school.edu.gh">
-        <label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required placeholder="Your password">
-        <button class="button gold" type="submit">Sign in</button>
-      </form>
-      <form id="set-password-form" class="hidden">
-        <label for="new-password">Choose a new password</label><input id="new-password" type="password" autocomplete="new-password" minlength="8" required placeholder="At least 8 characters">
-        <label for="confirm-password">Confirm password</label><input id="confirm-password" type="password" autocomplete="new-password" minlength="8" required placeholder="Repeat your password">
-        <button class="button gold" type="submit">Save password</button>
-      </form>
-      <button id="forgot-password" class="link-button" type="button">Forgot password?</button>
-      <p id="auth-message" class="message" aria-live="polite"></p>
-      <p class="hint">Accounts are created and managed by the school administrator.</p>
-    </section>
-  </main>
-
-  <div id="app" class="app hidden">
-    <aside class="sidebar">
-      <div class="brand"><img src="school-logo.jpg" alt="Gbekor Senior High School logo"><div><b>Gbekor SHS</b><span>LEARNING PORTAL</span></div></div>
-      <nav id="navigation" aria-label="Main navigation"></nav>
-      <div class="account"><small id="role-label"></small><b id="account-name"></b><button id="sign-out" class="button light">Sign out</button></div>
-    </aside>
-    <section class="content">
-      <header><div><h1 id="title">Dashboard</h1><p id="subtitle">Your learning overview</p></div><button id="refresh" class="button light">Refresh</button></header>
-      <div id="notice" class="notice hidden" role="status"></div>
-      <div id="view"></div>
-    </section>
+<div id="login">
+  <div class="login-card">
+    <div class="seal">GSHS</div>
+    <h1>Gbekor SHS LMS</h1><p>Gbekor Senior High School • Adaklu</p>
+    <label>Login as</label><select id="role"><option value="student">Student</option><option value="teacher">Teacher</option><option value="admin">Administrator</option></select>
+    <label>Username / Email</label><input id="username" placeholder="Enter your username">
+    <label>Password</label><input id="password" type="password" placeholder="Enter your password">
+    <button class="btn gold" onclick="login()">Sign in to Portal</button>
+    <p style="font-size:12px;margin-top:16px">Demo LMS: enter any username and password.</p>
   </div>
+</div>
 
-  <template id="loading"><div class="card loading">Loading…</div></template>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+<div id="portal" class="hidden">
+<aside class="sidebar">
+ <div class="brand"><b>Gbekor SHS</b><span>Learning Portal</span></div>
+ <div id="nav"></div>
+ <div class="userbox"><small id="roleName"></small><b id="userName"></b><br><button class="btn light" style="margin-top:8px;padding:7px 10px" onclick="logout()">Sign out</button></div>
+</aside>
+<main class="content">
+ <div class="topbar"><div><h1 id="pageTitle">Dashboard</h1><div class="role" id="subtitle">Your learning overview</div></div><button class="btn light" onclick="openNotifications()">🔔 Notifications <span id="notifyCount"></span></button></div>
+ <div id="view"></div>
+</main>
+</div>
+<div id="modalRoot"></div><div id="toastRoot"></div>
+
+<script>
+const SUPABASE_URL = "https://xqvqavdnhkvpigcezrsd.supabase.co";
+const SUPABASE_KEY = "sb_publishable_ESbBPXMfnjir3EH2eS6Kgw_PEi2cZ9f";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function login(){
+  const role = document.getElementById('role').value;
+  const email = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  if(!email || !password){ alert("Enter your email and password."); return; }
+
+  const button = document.querySelector('#login .btn');
+  button.disabled = true; button.textContent = "Signing in...";
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+  if(error){
+    button.disabled = false; button.textContent = "Sign in to Portal";
+    alert("Login failed: " + error.message);
+    return;
+  }
+
+  let profile = null;
+  const profileResult = await supabaseClient.from('profiles')
+    .select('*').eq('id', data.user.id).single();
+
+  if(profileResult.error){
+    await supabaseClient.auth.signOut();
+    button.disabled = false; button.textContent = "Sign in to Portal";
+    alert("Your account exists, but the LMS profile is missing. Run the LMS database setup SQL first.");
+    return;
+  }
+
+  profile = profileResult.data;
+  state.role = profile.role || role;
+  state.user = profile.full_name || data.user.email;
+  state.userId = data.user.id;
+
+  document.getElementById('login').classList.add('hidden');
+  document.getElementById('portal').classList.remove('hidden');
+  renderNav();
+  await loadSupabaseData();
+  go("Dashboard");
+  button.disabled = false; button.textContent = "Sign in to Portal";
+}
+
+async function logout(){
+  await supabaseClient.auth.signOut();
+  location.reload();
+}
+
+async function loadSupabaseData(){
+  if(!state.userId) return;
+  const { data: enrolled, error } = await supabaseClient
+    .from('enrollments')
+    .select('progress, courses(id,title,description,teacher_name,lesson_count)')
+    .eq('student_id', state.userId);
+
+  if(!error && enrolled){
+    DB.student.courses = enrolled.map(x => ({
+      id: x.courses.id,
+      title: x.courses.title,
+      teacher: x.courses.teacher_name || 'Gbekor SHS',
+      progress: x.progress || 0,
+      lessons: x.courses.lesson_count || 0,
+      completed: Math.round((x.progress || 0) * (x.courses.lesson_count || 0) / 100)
+    }));
+  }
+}
+
+async function submitAssignmentToSupabase(assignmentId, file){
+  if(!state.userId) return;
+  let filePath = null;
+  if(file){
+    const ext = file.name.split('.').pop();
+    filePath = `${state.userId}/${Date.now()}.${ext}`;
+    const upload = await supabaseClient.storage.from('assignment-files').upload(filePath, file);
+    if(upload.error) throw upload.error;
+  }
+  const { error } = await supabaseClient.from('submissions').insert({
+    assignment_id: assignmentId, student_id: state.userId, file_path: filePath, status: 'submitted'
+  });
+  if(error) throw error;
+}
+
+async function gradeQuizToSupabase(quizId, score, percentage){
+  if(!state.userId) return;
+  await supabaseClient.from('quiz_attempts').insert({
+    quiz_id: quizId, student_id: state.userId, score, percentage
+  });
+}
+
+async function saveAnnouncementToSupabase(title, body){
+  if(!state.userId) return;
+  const { error } = await supabaseClient.from('announcements').insert({
+    title, body, author_id: state.userId, audience: 'all'
+  });
+  if(error) throw error;
+}
+
+supabaseClient.auth.onAuthStateChange((event, session) => {
+  if(event === 'SIGNED_OUT') location.reload();
+});
+</script>
+
+<script>
+const DB={
+ student:{name:"Student",courses:[
+  {id:"ict",title:"Information & Communication Technology",teacher:"Mr. Dennis Adzabe",progress:68,lessons:12,completed:8},
+  {id:"math",title:"Core Mathematics",teacher:"Mathematics Department",progress:45,lessons:18,completed:8},
+  {id:"english",title:"English Language",teacher:"English Department",progress:82,lessons:14,completed:11},
+  {id:"science",title:"Integrated Science",teacher:"Science Department",progress:30,lessons:16,completed:5}
+ ]},
+ teacher:{name:"Mr. Dennis Adzabe",students:124},
+ admin:{name:"System Administrator",users:487}
+};
+let state={role:"student",userId:null,page:"Dashboard",quizAnswers:{},selectedCourse:null,notifications:[
+ {title:"Welcome to Gbekor SHS LMS",text:"Your learning portal is ready.",read:false},
+ {title:"ICT assignment due",text:"Computer Networks assignment is due Friday.",read:false},
+ {title:"New lesson published",text:"A new Word Processing lesson is available.",read:true}
+]};
+const navs={
+student:["Dashboard","My Courses","Lessons","Assignments","Quizzes","Scenario Lab","Gradebook","Certificates","Calendar","Notifications","Profile"],
+teacher:["Dashboard","My Courses","Lessons","Assignments","Quizzes","Students","Gradebook","Certificates","Calendar","Announcements","Profile"],
+admin:["Dashboard","Users","Courses","Departments","Enrollments","Assignments","Quizzes","Results","Certificates","Calendar","Announcements","Settings","Reports"]
+};
+function esc(s){return String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
+function demoLoginLegacy(){let r=document.getElementById('role').value,n=document.getElementById('username').value.trim();state.role=r;state.user=n||DB[r].name;document.getElementById('login').classList.add('hidden');document.getElementById('portal').classList.remove('hidden');renderNav();go("Dashboard")}
+function demoLogoutLegacy(){document.getElementById('portal').classList.add('hidden');document.getElementById('login').classList.remove('hidden')}
+function renderNav(){document.getElementById('nav').innerHTML=navs[state.role].map(x=>`<button class="nav ${x===state.page?'active':''}" onclick="go('${x}')"><span class="txt">${x}</span></button>`).join('');document.getElementById('roleName').textContent=state.role.toUpperCase()+" PORTAL";document.getElementById('userName').textContent=state.user||DB[state.role].name;document.getElementById('notifyCount').textContent=state.notifications.filter(n=>!n.read).length||""}
+function go(page){state.page=page;renderNav();document.getElementById('pageTitle').textContent=page;document.getElementById('subtitle').textContent=subtitle(page);document.getElementById('view').innerHTML=views[page]?views[page]():empty(page);window.scrollTo(0,0)}
+function subtitle(p){return {Dashboard:"Your overview and recent activity","My Courses":"All courses available to you","Lessons":"Learning materials and progress","Assignments":"Create, submit and manage assignments","Quizzes":"Knowledge checks and assessments","Gradebook":"Assessment performance and results"}[p]||"Gbekor SHS Learning Management System"}
+const empty=p=>`<div class="card empty"><h2>${p}</h2><p>This module is ready for your school data.</p><button class="btn" onclick="toast('${p} module opened successfully')">Test Module</button></div>`;
+const courseCard=c=>`<div class="card"><div class="course"><div class="icon">📘</div><div style="flex:1"><h3>${c.title}</h3><p>${c.teacher} • ${c.completed}/${c.lessons} lessons completed</p></div><button class="btn light" onclick="openCourse('${c.id}')">Open</button></div><div class="progress"><span style="width:${c.progress}%"></span></div><small class="muted">${c.progress}% complete</small></div>`;
+const views={
+"Dashboard":()=>dashboard(),
+"My Courses":()=>`<div class="toolbar"><input placeholder="Search courses" oninput="searchCourses(this.value)"><button class="btn gold" onclick="toast('Course enrollment request sent')">+ Enroll in Course</button></div><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))" id="courseGrid">${DB.student.courses.map(courseCard).join('')}</div>`,
+"Lessons":()=>`<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(290px,1fr))">${DB.student.courses.map(c=>`<div class="card"><h3>${c.title}</h3><ul class="list"><li><span>1. Introduction</span><span class="badge green">Completed</span></li><li><span>2. Core Concepts</span><span class="badge green">Completed</span></li><li><span>3. Practical Activity</span><button class="btn light" onclick="toast('Lesson opened')">Open</button></li><li><span>4. Assessment</span><span class="badge amber">Locked</span></li></ul></div>`).join('')}</div>`,
+"Assignments":()=>assignments(),
+"Quizzes":()=>quizList(),
+"Scenario Lab":()=>scenario(),
+"Gradebook":()=>gradebook(),
+"Certificates":()=>certificates(),
+"Calendar":()=>calendar(),
+"Notifications":()=>notifications(),
+"Profile":()=>profile(),
+"Students":()=>students(),
+"Users":()=>users(),
+"Courses":()=>adminCourses(),
+"Departments":()=>departments(),
+"Enrollments":()=>enrollments(),
+"Results":()=>results(),
+"Announcements":()=>announcements(),
+"Settings":()=>settings(),
+"Reports":()=>reports()
+};
+function dashboard(){if(state.role==="student")return `<div class="hero"><h2>Welcome back, ${esc(state.user||"Student")}</h2><p>Continue your learning journey. You have 2 pending assignments and 1 quiz available.</p><button class="btn gold" onclick="go('My Courses')">Continue Learning</button></div><div class="grid stats">${stat("Active Courses","4","3 in progress")}${stat("Average Grade","78%","Good standing")}${stat("Lessons Completed","32","Across all courses")}${stat("Certificates","2","1 more eligible")}</div><div class="grid cols"><div><div class="section-title"><h2>Continue Learning</h2><button class="btn light" onclick="go('My Courses')">View all</button></div>${courseCard(DB.student.courses[0])}</div><div class="card"><h2>Upcoming</h2><ul class="list"><li>ICT Assignment <span class="badge amber">Friday</span></li><li>Mathematics Quiz <span class="badge blue">Monday</span></li><li>English Essay <span class="badge red">Aug 28</span></li></ul></div></div>`;
+if(state.role==="teacher")return `<div class="hero"><h2>Teaching Dashboard</h2><p>Manage courses, monitor students and keep learning activities moving.</p><button class="btn gold" onclick="go('Students')">View Students</button></div><div class="grid stats">${stat("My Students","124","Across 4 courses")}${stat("Active Courses","4","Current term")}${stat("Assignments","8","2 to grade")}${stat("Average Score","76%","Across classes")}</div><div class="grid cols"><div class="card"><h2>Recent Submissions</h2>${table(["Student","Assignment","Status"],[["Ama Mensah","ICT Networks","Submitted"],["Kofi Asare","Word Processing","Submitted"],["Yaw Doe","ICT Networks","Late"]])}</div><div class="card"><h2>Quick Actions</h2><p><button class="btn" onclick="go('Assignments')">Create Assignment</button></p><p><button class="btn light" onclick="go('Quizzes')">Create Quiz</button></p><p><button class="btn light" onclick="go('Announcements')">Post Announcement</button></p></div></div>`;
+return `<div class="hero"><h2>Administration Dashboard</h2><p>Manage users, academic content, records and school-wide learning activity.</p><button class="btn gold" onclick="go('Users')">Manage Users</button></div><div class="grid stats">${stat("Total Users","487","Students & staff")}${stat("Courses","26","12 active this term")}${stat("Teachers","31","Teaching staff")}${stat("Completions","1,842","Learning records")}</div><div class="grid cols"><div class="card"><h2>System Activity</h2>${table(["Time","Activity","User"],[["08:42","Quiz submitted","Ama Mensah"],["08:30","Lesson published","Mr. Adzabe"],["08:12","New enrollment","Admin"]])}</div><div class="card"><h2>System Status</h2><ul class="list"><li>Database <span class="badge green">Operational</span></li><li>Authentication <span class="badge green">Operational</span></li><li>Storage <span class="badge green">Available</span></li></ul></div></div>`}
+function stat(a,b,c){return `<div class="card stat"><small class="muted">${a}</small><strong>${b}</strong><span class="muted">${c}</span></div>`}
+function table(head,rows){return `<table><thead><tr>${head.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table>`}
+function searchCourses(q){q=q.toLowerCase();document.getElementById('courseGrid').innerHTML=DB.student.courses.filter(c=>c.title.toLowerCase().includes(q)).map(courseCard).join('')}
+function openCourse(id){let c=DB.student.courses.find(x=>x.id===id);modal(`<h2>${c.title}</h2><p class="muted">${c.teacher}</p><div class="progress"><span style="width:${c.progress}%"></span></div><h3>Course Content</h3><ul class="list"><li>Welcome & Course Orientation <button class="btn light" onclick="toast('Lesson opened')">Open</button></li><li>Unit 1: Introduction <span class="badge green">Completed</span></li><li>Unit 2: Practical Skills <button class="btn light" onclick="toast('Lesson opened')">Open</button></li><li>Unit Quiz <button class="btn" onclick="closeModal();go('Quizzes')">Take Quiz</button></li></ul>`)}
+function assignments(){let items=[["ICT Computer Networks","Friday, 29 Aug","Pending"],["English Essay: Technology","28 Aug","Submitted"],["Mathematics Algebra Exercise","2 Sep","Pending"]];if(state.role==="teacher"||state.role==="admin")return `<div class="toolbar"><button class="btn gold" onclick="assignmentForm()">+ Create Assignment</button><button class="btn light" onclick="toast('Assignment report exported')">Export</button></div><div class="card">${table(["Title","Due Date","Submissions","Action"],[["ICT Computer Networks","29 Aug","31/42","Grade"],["Word Processing Project","3 Sep","18/42","View"],["Digital Safety Poster","10 Sep","0/42","Edit"]].map(r=>[...r.slice(0,3),`<button class='btn light' onclick="toast('${r[3]} opened')">${r[3]}</button>`]))}</div>`;return `<div class="toolbar"><button class="btn gold" onclick="go('My Courses')">Browse Courses</button></div><div class="card">${table(["Assignment","Due","Status","Action"],items.map(r=>[r[0],r[1],`<span class="badge ${r[2]==="Submitted"?"green":"amber"}">${r[2]}</span>`,`<button class="btn light" onclick="submitAssignment('${r[0]}')">${r[2]==="Submitted"?"View":"Submit"}</button>`]))}</div>`}
+function assignmentForm(){modal(`<h2>Create Assignment</h2><div class="form-grid"><div><label>Title</label><input id="atitle"></div><div><label>Course</label><select><option>ICT</option><option>Mathematics</option><option>English</option></select></div></div><label>Instructions</label><textarea rows="5"></textarea><label>Due Date</label><input type="date"><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('Assignment created successfully')">Publish Assignment</button>`)}
+function submitAssignment(x){modal(`<h2>Submit: ${x}</h2><p>Upload your completed work. This demo stores no actual file yet.</p><input type="file"><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('Assignment submitted successfully')">Submit Work</button>`)}
+const questions=[
+{q:"Which component processes instructions in a computer?",a:["Monitor","CPU","Keyboard","Printer"],c:1},
+{q:"What does URL stand for?",a:["Uniform Resource Locator","Universal Resource Link","User Resource Login","Unified Routing Language"],c:0},
+{q:"Which is a common cloud storage service?",a:["Spreadsheet","Google Drive","Keyboard","Motherboard"],c:1},
+{q:"Which key combination commonly saves a document?",a:["Ctrl + S","Ctrl + P","Ctrl + X","Alt + F4"],c:0},
+{q:"A network connecting computers over a large geographical area is called?",a:["LAN","WAN","PAN","USB"],c:1}
+];
+function quizList(){return `<div class="toolbar">${(state.role==="teacher"||state.role==="admin")?`<button class="btn gold" onclick="quizForm()">+ Create Quiz</button>`:""}</div><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"><div class="card"><h3>ICT Fundamentals Quiz</h3><p class="muted">5 questions • 15 minutes • Pass mark 50%</p><button class="btn" onclick="takeQuiz()">Start Quiz</button></div><div class="card"><h3>Word Processing Quiz</h3><p class="muted">10 questions • 20 minutes</p><button class="btn light" onclick="toast('Quiz scheduled for next lesson')">Scheduled</button></div></div>`}
+function takeQuiz(){state.quizAnswers={};document.getElementById('pageTitle').textContent="ICT Fundamentals Quiz";document.getElementById('view').innerHTML=`<div class="card"><p class="notice">Answer all questions, then submit your quiz.</p>${questions.map((q,i)=>`<div style="padding:14px 0;border-bottom:1px solid var(--line)"><h3>${i+1}. ${q.q}</h3>${q.a.map((a,j)=>`<label class="quiz-option"><input type="radio" name="q${i}" onchange="state.quizAnswers[${i}]=${j}"> ${a}</label>`).join('')}</div>`).join('')}<button class="btn gold" style="margin-top:20px" onclick="gradeQuiz()">Submit Quiz</button></div>`}
+function gradeQuiz(){let score=questions.reduce((n,q,i)=>n+(state.quizAnswers[i]===q.c),0),pct=Math.round(score/questions.length*100);document.getElementById('view').innerHTML=`<div class="card" style="text-align:center;padding:40px"><h2>Quiz Result</h2><div style="font:700 60px Georgia;color:${pct>=50?'var(--green)':'var(--danger)'}">${pct}%</div><p>You answered ${score} out of ${questions.length} questions correctly.</p><span class="badge ${pct>=50?'green':'red'}">${pct>=50?'PASSED':'RETRY RECOMMENDED'}</span><p><button class="btn" onclick="go('Quizzes')">Back to Quizzes</button></p></div>`}
+function quizForm(){modal(`<h2>Create Quiz</h2><label>Quiz Title</label><input placeholder="Enter quiz title"><div class="form-grid"><div><label>Course</label><select><option>ICT</option><option>Mathematics</option></select></div><div><label>Time Limit</label><input type="number" value="20"></div></div><label>Instructions</label><textarea rows="4"></textarea><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('Quiz created')">Create Quiz</button>`)}
+function scenario(){return `<div class="card"><h2>Scenario-Based Learning: Computer Lab Network Failure</h2><p class="notice">Scenario: During an ICT practical lesson, all student computers lose internet access while the teacher's computer remains connected.</p><h3>What should you check first?</h3><button class="btn light" onclick="scenarioAnswer(0)">A. Restart every computer</button> <button class="btn light" onclick="scenarioAnswer(1)">B. Check the network switch and cables</button> <button class="btn light" onclick="scenarioAnswer(2)">C. Install new software</button><div id="scenarioFeedback"></div></div>`}
+function scenarioAnswer(i){document.getElementById('scenarioFeedback').innerHTML=i===1?`<div class="notice"><b>Correct.</b> Start with shared infrastructure. Since one computer is online, check the switch, cables and connections used by student computers.</div>`:`<div class="notice"><b>Try again.</b> Consider checking the shared network infrastructure before making changes to every computer.</div>`}
+function gradebook(){let rows=[["ICT","Quiz 1","85","A"],["ICT","Assignment","78","B+"],["Mathematics","Algebra Test","72","B"],["English","Essay","88","A"]];return `<div class="card">${table(["Course","Assessment","Score","Grade"],rows)}<h3 style="margin-top:20px">Overall Average: <span style="color:var(--primary)">80.75%</span></h3></div>`}
+function certificates(){return `<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))"><div class="card"><h2>Digital Literacy Fundamentals</h2><p class="muted">Completed on 15 August 2026</p><button class="btn" onclick="showCertificate()">View Certificate</button></div><div class="card"><h2>Word Processing Essentials</h2><p class="muted">80% course completion</p><button class="btn light" onclick="toast('Complete the remaining lessons to unlock this certificate')">Locked</button></div></div>`}
+function showCertificate(){modal(`<div class="certificate"><div class="seal">GSHS</div><p>GBEKOR SENIOR HIGH SCHOOL</p><h1>Certificate of Completion</h1><p>This certifies that</p><h2>${esc(state.user||"Student")}</h2><p>has successfully completed</p><h2>Digital Literacy Fundamentals</h2><p>Issued by Gbekor Senior High School Learning Management System</p><p>August 2026</p></div><button class="btn" style="margin-top:15px" onclick="window.print()">Print Certificate</button>`)}
+function calendar(){let days=Array.from({length:31},(_,i)=>i+1);return `<div class="card"><div class="section-title"><h2>August 2026</h2><div><button class="btn light">‹</button> <button class="btn light">›</button></div></div><div class="calendar">${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(x=>`<b style="padding:8px">${x}</b>`).join('')}${days.map(d=>`<div class="day"><b>${d}</b>${({24:"ICT Quiz",28:"Essay Due",29:"Networks Assignment"}[d]||"").split("|").filter(Boolean).map(e=>`<div class="event">${e}</div>`).join('')}</div>`).join('')}</div></div>`}
+function notifications(){state.notifications.forEach(n=>n.read=true);renderNav();return `<div class="card">${state.notifications.map(n=>`<div class="list"><li><div><b>${n.title}</b><br><span class="muted">${n.text}</span></div><span class="badge ${n.read?'green':'amber'}">${n.read?'Read':'New'}</span></li></div>`).join('')}</div>`}
+function openNotifications(){go("Notifications")}
+function profile(){return `<div class="grid cols"><div class="card"><h2>My Profile</h2><label>Full Name</label><input value="${esc(state.user||DB[state.role].name)}"><label>Email</label><input value="user@gbekorshs.edu.gh"><label>Phone</label><input placeholder="Add phone number"><button class="btn gold" style="margin-top:15px" onclick="toast('Profile saved')">Save Changes</button></div><div class="card"><h2>Account</h2><p><b>Role:</b> ${state.role}</p><p><b>Status:</b> Active</p><button class="btn light" onclick="toast('Password reset link would be sent here')">Change Password</button></div></div>`}
+function students(){return `<div class="toolbar"><input placeholder="Search student" oninput="filterRows(this.value)"><button class="btn gold" onclick="toast('Student enrollment opened')">+ Add Student</button></div><div class="card" id="dataTable">${table(["Student","Course","Progress","Status"],[["Ama Mensah","ICT","86%","Active"],["Kofi Asare","ICT","72%","Active"],["Yaw Doe","ICT","41%","At Risk"],["Esi D.","ICT","93%","Active"]].map(r=>[r[0],r[1],r[2],`<span class='badge ${r[3]==='At Risk'?'red':'green'}'>${r[3]}</span>`]))}</div>`}
+function filterRows(q){document.querySelectorAll('#dataTable tbody tr').forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q.toLowerCase())?'':'none')}
+function users(){return `<div class="toolbar"><input placeholder="Search users" oninput="filterRows(this.value)"><button class="btn gold" onclick="userForm()">+ Add User</button></div><div class="card" id="dataTable">${table(["Name","Role","Email","Status","Action"],[["Ama Mensah","Student","ama@school.edu","Active","Edit"],["Mr. Dennis Adzabe","Teacher","dennis@school.edu","Active","Edit"],["System Admin","Admin","admin@school.edu","Active","Edit"]].map(r=>[...r.slice(0,4),`<button class='btn light' onclick="toast('User editor opened')">Edit</button>`]))}</div>`}
+function userForm(){modal(`<h2>Add User</h2><div class="form-grid"><div><label>Full Name</label><input></div><div><label>Role</label><select><option>Student</option><option>Teacher</option><option>Admin</option></select></div></div><label>Email</label><input type="email"><label>Temporary Password</label><input type="password"><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('User created successfully')">Create User</button>`)}
+function adminCourses(){return `<div class="toolbar"><button class="btn gold" onclick="courseForm()">+ Create Course</button></div><div class="card">${table(["Course","Department","Teacher","Students","Status"],[["ICT","Science","Dennis Adzabe","124","Active"],["Core Mathematics","Mathematics","Math Dept","132","Active"],["English Language","Languages","English Dept","128","Active"]])}</div>`}
+function courseForm(){modal(`<h2>Create Course</h2><label>Course Title</label><input><div class="form-grid"><div><label>Department</label><select><option>Science</option><option>Mathematics</option><option>Languages</option></select></div><div><label>Teacher</label><input placeholder="Assign teacher"></div></div><label>Description</label><textarea rows="5"></textarea><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('Course created')">Create Course</button>`)}
+function departments(){return `<div class="card">${table(["Department","Courses","Teachers","Action"],[["Science & ICT","8","9","Manage"],["Mathematics","5","6","Manage"],["Languages","6","7","Manage"],["Visual Arts","4","5","Manage"]].map(r=>[...r.slice(0,3),`<button class='btn light' onclick="toast('${r[0]} opened')">${r[3]}</button>`]))}</div>`}
+function enrollments(){return `<div class="card">${table(["Student","Course","Enrollment Date","Status"],[["Ama Mensah","ICT","15 Aug 2026","Active"],["Kofi Asare","Mathematics","15 Aug 2026","Active"],["Esi D.","English","16 Aug 2026","Active"]])}</div>`}
+function results(){return `<div class="card">${table(["Student","Assessment","Score","Result"],[["Ama Mensah","ICT Quiz","85%","Pass"],["Kofi Asare","ICT Quiz","72%","Pass"],["Yaw Doe","ICT Quiz","43%","Review Needed"]])}</div>`}
+function announcements(){return `<div class="toolbar"><button class="btn gold" onclick="announcementForm()">+ New Announcement</button></div><div class="card"><h2>ICT Practical Assessment</h2><p class="muted">Published today by Mr. Dennis Adzabe</p><p>All students should prepare for the upcoming practical assessment.</p><hr><h2>Welcome to the New Term</h2><p class="muted">Published 20 August 2026</p></div>`}
+function announcementForm(){modal(`<h2>New Announcement</h2><label>Title</label><input><label>Audience</label><select><option>All Students</option><option>Teachers</option><option>ICT Students</option></select><label>Message</label><textarea rows="6"></textarea><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('Announcement published')">Publish</button>`)}
+function settings(){return `<div class="grid cols"><div class="card"><h2>School Settings</h2><label>School Name</label><input value="Gbekor Senior High School"><label>Academic Year</label><input value="2026/2027"><label>Default Pass Mark</label><input type="number" value="50"><button class="btn gold" style="margin-top:15px" onclick="toast('Settings saved')">Save Settings</button></div><div class="card"><h2>Data & Security</h2><p><button class="btn light" onclick="toast('Database backup started')">Back Up Data</button></p><p><button class="btn light" onclick="toast('Audit log opened')">View Audit Log</button></p></div></div>`}
+function reports(){return `<div class="grid stats">${stat("Completion Rate","74%","This term")}${stat("Quiz Average","76%","All quizzes")}${stat("Active Users","428","Last 30 days")}${stat("Certificates","1,842","Issued")}</div><div class="card"><h2>Report Center</h2><p><button class="btn" onclick="toast('Student progress report generated')">Student Progress Report</button> <button class="btn light" onclick="toast('Course performance report generated')">Course Performance</button> <button class="btn light" onclick="toast('Assessment report generated')">Assessment Results</button></p></div>`}
+function modal(html){document.getElementById('modalRoot').innerHTML=`<div class="modal" onclick="if(event.target===this)closeModal()"><div class="modalbox">${html}<button class="btn light" style="margin-top:16px" onclick="closeModal()">Close</button></div></div>`}
+function closeModal(){document.getElementById('modalRoot').innerHTML=""}
+function toast(msg){document.getElementById('toastRoot').innerHTML=`<div class="toast">${msg}</div>`;setTimeout(()=>document.getElementById('toastRoot').innerHTML="",2600)}
+</script>
+</body></html>
