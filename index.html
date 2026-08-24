@@ -24,8 +24,10 @@
       <option value="teacher">Teacher Portal</option>
       <option value="admin">Administrator Portal</option>
     </select>
-    <button class="btn gold" onclick="login()">Enter Selected Portal</button>
-    <p style="font-size:12px;margin-top:16px">No username, email, password or account is required. Select a portal to continue.</p>
+    <input id="username" type="text" placeholder="Username" autocomplete="username">
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+    <button class="btn gold" onclick="login()">Sign in to Selected Portal</button>
+    <p style="font-size:12px;margin-top:16px">Demo login: <b>Username: admin</b> • <b>Password: admin</b></p>
   </div>
 </div>
 
@@ -65,9 +67,15 @@ admin:["Dashboard","Users","Courses","Departments","Enrollments","Assignments","
 };
 function esc(s){return String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
 function login(){
+  const username=document.getElementById('username').value.trim();
+  const password=document.getElementById('password').value;
+  if(username!=="admin" || password!=="admin"){
+    alert("Incorrect username or password. Please use username: admin and password: admin.");
+    return;
+  }
   let r=document.getElementById('role').value;
   state.role=r;
-  state.user=DB[r].name;
+  state.user="Admin";
   document.getElementById('login').classList.add('hidden');
   document.getElementById('portal').classList.remove('hidden');
   renderNav();
@@ -76,7 +84,7 @@ function login(){
 function logout(){
   document.getElementById('portal').classList.add('hidden');
   document.getElementById('login').classList.remove('hidden');
-  document.getElementById('role').value='student';
+  document.getElementById('role').value='student';document.getElementById('username').value='';document.getElementById('password').value='';
 }
 function renderNav(){document.getElementById('nav').innerHTML=navs[state.role].map(x=>`<button class="nav ${x===state.page?'active':''}" onclick="go('${x}')"><span class="txt">${x}</span></button>`).join('');document.getElementById('roleName').textContent=state.role.toUpperCase()+" PORTAL";document.getElementById('userName').textContent=state.user||DB[state.role].name;document.getElementById('notifyCount').textContent=state.notifications.filter(n=>!n.read).length||""}
 function go(page){state.page=page;renderNav();document.getElementById('pageTitle').textContent=page;document.getElementById('subtitle').textContent=subtitle(page);document.getElementById('view').innerHTML=views[page]?views[page]():empty(page);window.scrollTo(0,0)}
