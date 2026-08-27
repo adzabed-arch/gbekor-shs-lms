@@ -1,18 +1,9 @@
-# Gbekor SHS LMS – Supabase Connected
+# Login Fix
 
-## Files
-- index.html — LMS with Supabase client and real email/password authentication
-- supabase_setup.sql — Database, tables, policies, storage bucket and sample courses
-
-## IMPORTANT SETUP
 1. In Supabase, open SQL Editor.
-2. Create a new query.
-3. Open supabase_setup.sql and copy everything.
-4. Paste it into the SQL Editor and click Run.
-5. Go to Authentication > Users > Add user.
-6. Create a student, teacher or admin email/password account.
-7. Copy the new user's UUID.
-8. Insert a matching row in the profiles table using the example at the bottom of the SQL file.
-9. Upload index.html to GitHub and redeploy GitHub Pages.
+2. Open `supabase_account_policies.sql` and run the complete script.
+3. In Supabase Authentication > Providers > Email, disable **Confirm email** if you want new users to sign in immediately after creating an account.
+4. Replace the old `index.html` in GitHub with this new version.
+5. For sign-in, users must first select Student, Teacher, or Administrator, then enter the email and password used when creating the account.
 
-The browser publishable key is already included. Never add a service_role or secret key to index.html.
+Important: If an old account was created before the SQL trigger was installed, this updated version can repair its LMS profile after a successful login.

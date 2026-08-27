@@ -12,22 +12,51 @@
 #portal{display:flex;min-height:100vh}.sidebar{width:255px;background:var(--primary2);color:#fff;padding:20px 14px;position:sticky;top:0;height:100vh}.brand{padding:10px 12px 24px;border-bottom:1px solid #ffffff22;margin-bottom:15px}.brand b{display:block;font:700 20px Georgia}.brand span{font-size:11px;letter-spacing:1.5px;color:#f0d58d}.nav{width:100%;border:0;background:transparent;color:#eadde0;padding:11px 13px;text-align:left;border-radius:8px;cursor:pointer;margin:2px 0}.nav:hover,.nav.active{background:#ffffff16;color:#fff}.nav.active{border-left:3px solid var(--gold);font-weight:bold}.userbox{position:absolute;bottom:18px;left:14px;right:14px;padding:12px;background:#ffffff12;border-radius:10px}.userbox small{color:#ddcbd0;display:block;margin-bottom:7px}.content{flex:1;padding:26px 32px;max-width:1400px}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.topbar h1{margin:0;font-family:Georgia,serif}.topbar .role{color:var(--muted);font-size:13px}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,1fr)}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}.stat strong{display:block;font:700 32px Georgia;color:var(--primary);margin:7px 0}.muted{color:var(--muted)}.hero{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;padding:28px;border-radius:16px;margin-bottom:18px}.hero h2{font:700 28px Georgia;margin:0 0 8px}.cols{grid-template-columns:1.45fr 1fr}.course{display:flex;gap:15px;align-items:center}.icon{width:52px;height:52px;border-radius:12px;background:#f3e4bd;display:grid;place-items:center;font-size:24px}.course h3{margin:0}.course p{margin:6px 0;color:var(--muted);font-size:13px}.progress{height:9px;background:#e9e1d3;border-radius:10px;overflow:hidden;margin-top:12px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--gold));border-radius:10px}.list{padding:0;margin:0;list-style:none}.list li{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}.badge{padding:4px 8px;border-radius:20px;font-size:11px;font-weight:bold;white-space:nowrap}.green{background:#dff1e8;color:var(--green)}.amber{background:#f8edd5;color:#96631a}.red{background:#f7e1e3;color:var(--danger)}.blue{background:#e2edf9;color:var(--blue)}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}th{font-size:11px;color:var(--muted);text-transform:uppercase}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.toolbar input{max-width:330px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.empty{text-align:center;padding:50px;color:var(--muted)}.quiz-option{display:block;padding:12px;border:1px solid var(--line);border-radius:9px;margin:8px 0;cursor:pointer}.quiz-option:hover{background:#faf3e4}.notice{padding:12px;border-left:4px solid var(--gold);background:#fff8e8;margin:10px 0}.certificate{border:8px double var(--gold);padding:42px;text-align:center;background:#fffaf0}.certificate h1{font:700 38px Georgia;color:var(--primary)}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.day{min-height:86px;padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff}.event{font-size:11px;background:#f3e4bd;color:var(--primary);padding:4px;border-radius:4px;margin-top:5px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.modal{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:20px;z-index:20}.modalbox{width:650px;max-width:100%;max-height:90vh;overflow:auto;background:var(--card);padding:24px;border-radius:14px}.toast{position:fixed;right:20px;bottom:20px;background:#263d32;color:#fff;padding:14px 18px;border-radius:9px;box-shadow:var(--shadow);z-index:30}
 @media(max-width:950px){.sidebar{width:220px}.stats{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}@media(max-width:680px){.sidebar{width:62px;padding:12px 6px}.brand b,.brand span,.nav .txt,.userbox{display:none}.content{padding:18px}.nav{text-align:center}.stats{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.topbar h1{font-size:23px}}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div id="login">
   <div class="login-card">
     <img src="gbekor-logo.jpg" alt="Gbekor Senior High School logo" class="school-logo">
-    <h1>Gbekor SHS LMS</h1><p>Gbekor Senior High School • Adaklu</p>
-    <label>Select Portal</label>
-    <select id="role">
-      <option value="student">Student Portal</option>
-      <option value="teacher">Teacher Portal</option>
-      <option value="admin">Administrator Portal</option>
-    </select>
-    <input id="username" type="text" placeholder="Username" autocomplete="username">
-    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
-    <button class="btn gold" onclick="login()">Sign in to Selected Portal</button>
-    <p style="font-size:12px;margin-top:16px">Demo login: <b>Username: admin</b> • <b>Password: admin</b></p>
+    <h1>Gbekor SHS LMS</h1>
+    <p>Gbekor Senior High School • Adaklu</p>
+
+    <div id="authLogin">
+      <h3 style="text-align:center;margin:22px 0 8px">Choose your portal</h3>
+      <p class="muted" style="text-align:center">Select who you are before signing in.</p>
+      <label>I am a</label>
+      <select id="loginRole">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="admin">Administrator</option>
+      </select>
+      <label>Email Address</label>
+      <input id="loginEmail" type="email" placeholder="Enter your email" autocomplete="email">
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="Enter your password" autocomplete="current-password">
+      <button class="btn gold" onclick="login()">Sign in to selected portal</button>
+      <p style="font-size:13px;margin-top:16px">New to the LMS? <button class="btn light" style="padding:7px 10px" onclick="showRegister()">Create your account</button></p>
+    </div>
+
+    <div id="authRegister" class="hidden">
+      <h3 style="text-align:center;margin:22px 0 8px">Create your LMS account</h3>
+      <label>Full Name</label>
+      <input id="registerName" type="text" placeholder="Enter your full name">
+      <label>Email Address</label>
+      <input id="registerEmail" type="email" placeholder="Enter your email">
+      <label>Select Portal Role</label>
+      <select id="registerRole">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="admin">Administrator</option>
+      </select>
+      <label>Create Password</label>
+      <input id="registerPassword" type="password" placeholder="Create a password" autocomplete="new-password">
+      <label>Confirm Password</label>
+      <input id="registerConfirm" type="password" placeholder="Confirm your password" autocomplete="new-password">
+      <button class="btn gold" onclick="registerAccount()">Create Account</button>
+      <p style="font-size:13px;margin-top:16px">Already have an account? <button class="btn light" style="padding:7px 10px" onclick="showLogin()">Sign in</button></p>
+    </div>
   </div>
 </div>
 
@@ -55,7 +84,7 @@ const DB={
  teacher:{name:"Mr. Dennis Adzabe",students:124},
  admin:{name:"System Administrator",users:487}
 };
-let state={role:"student",page:"Dashboard",quizAnswers:{},selectedCourse:null,notifications:[
+let state={role:"student",user:"",email:"",userId:null,page:"Dashboard",quizAnswers:{},selectedCourse:null,notifications:[
  {title:"Welcome to Gbekor SHS LMS",text:"Your learning portal is ready.",read:false},
  {title:"ICT assignment due",text:"Computer Networks assignment is due Friday.",read:false},
  {title:"New lesson published",text:"A new Word Processing lesson is available.",read:true}
@@ -66,26 +95,98 @@ teacher:["Dashboard","My Courses","Lessons","Assignments","Quizzes","Students","
 admin:["Dashboard","Users","Courses","Departments","Enrollments","Assignments","Quizzes","Results","Certificates","Calendar","Announcements","Settings","Reports"]
 };
 function esc(s){return String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
-function login(){
-  const username=document.getElementById('username').value.trim();
-  const password=document.getElementById('password').value;
-  if(username!=="admin" || password!=="admin"){
-    alert("Incorrect username or password. Please use username: admin and password: admin.");
+const SUPABASE_URL="https://xqvqavdnhkvpigcezrsd.supabase.co";
+const SUPABASE_KEY="sb_publishable_ESbBPXMfnjir3EH2eS6Kgw_PEi2cZ9f";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+function showRegister(){
+  document.getElementById('authLogin').classList.add('hidden');
+  document.getElementById('authRegister').classList.remove('hidden');
+}
+function showLogin(){
+  document.getElementById('authRegister').classList.add('hidden');
+  document.getElementById('authLogin').classList.remove('hidden');
+}
+async function registerAccount(){
+  const name=document.getElementById('registerName').value.trim();
+  const email=document.getElementById('registerEmail').value.trim().toLowerCase();
+  const role=document.getElementById('registerRole').value;
+  const password=document.getElementById('registerPassword').value;
+  const confirm=document.getElementById('registerConfirm').value;
+  if(!name||!email||!password||!confirm){alert('Please complete all fields.');return}
+  if(password.length<6){alert('Password must be at least 6 characters.');return}
+  if(password!==confirm){alert('Passwords do not match.');return}
+  const {data,error}=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name,role}}});
+  if(error){alert('Account creation failed: '+error.message);return}
+  if(data.session){
+    const {data:profileCheck}=await supabaseClient.from('profiles').select('*').eq('id',data.user.id).single();
+    if(!profileCheck){
+      alert('Your account was created, but the LMS profile is not ready yet. Run the included SQL fix, then sign in again.');
+      await supabaseClient.auth.signOut();
+      showLogin();
+      return;
+    }
+    await supabaseClient.auth.signOut();
+    alert('Account created successfully. Now select your role, enter your email and password, and sign in.');
+    showLogin();
+  }else{
+    alert('Account created successfully. Check your email and confirm the account, then select your role and sign in.');
+    showLogin();
+  }
+}
+async function login(){
+  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  const password=document.getElementById('loginPassword').value;
+  const selectedRole=document.getElementById('loginRole').value;
+  if(!email||!password){alert('Enter your email and password.');return}
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
+  if(error){
+    let msg=error.message||'Unknown error';
+    if(/email not confirmed/i.test(msg)) msg='Your account was created, but your email has not been confirmed. Check your email inbox and spam folder for the confirmation link, then sign in again.';
+    alert('Sign-in failed: '+msg);
     return;
   }
-  let r=document.getElementById('role').value;
-  state.role=r;
-  state.user="Admin";
+  let {data:profile,error:profileError}=await supabaseClient.from('profiles').select('*').eq('id',data.user.id).single();
+  if(profileError||!profile){
+    const fallbackRole=data.user.user_metadata?.role||'student';
+    const fallbackName=data.user.user_metadata?.full_name||email.split('@')[0];
+    const up=await supabaseClient.from('profiles').upsert({id:data.user.id,full_name:fallbackName,role:fallbackRole},{onConflict:'id'}).select().single();
+    if(up.error){alert('Your account is valid but your LMS profile is missing. Please run the included profile policy SQL.');await supabaseClient.auth.signOut();return}
+    profile=up.data;
+  }
+  if(profile.role!==selectedRole){await supabaseClient.auth.signOut();alert('This account is registered as '+profile.role+'. Please select the correct portal before signing in.');return}
+  state.role=profile.role;state.user=profile.full_name;state.email=email;state.userId=data.user.id;
+  enterPortal();
+}
+function enterPortal(){
   document.getElementById('login').classList.add('hidden');
   document.getElementById('portal').classList.remove('hidden');
-  renderNav();
-  go("Dashboard");
+  state.page='Dashboard';renderNav();go('Dashboard');
 }
-function logout(){
+async function logout(){
+  await supabaseClient.auth.signOut();
   document.getElementById('portal').classList.add('hidden');
   document.getElementById('login').classList.remove('hidden');
-  document.getElementById('role').value='student';document.getElementById('username').value='';document.getElementById('password').value='';
+  document.getElementById('loginPassword').value='';
 }
+async function changePassword(){
+  const current=prompt('Enter your new password (minimum 6 characters):');
+  if(!current)return;
+  if(current.length<6){alert('Password must be at least 6 characters.');return}
+  const {error}=await supabaseClient.auth.updateUser({password:current});
+  if(error)alert('Password update failed: '+error.message);
+  else toast('Password changed successfully.');
+}
+async function saveProfile(){
+  const name=document.getElementById('profileName').value.trim();
+  if(!name){alert('Enter your name.');return}
+  const {error}=await supabaseClient.from('profiles').update({full_name:name}).eq('id',state.userId);
+  if(error){alert('Could not save profile: '+error.message);return}
+  state.user=name;renderNav();toast('Profile saved successfully.');
+}
+supabaseClient.auth.onAuthStateChange(async (event,session)=>{
+  if(event==='SIGNED_OUT') return;
+});
 function renderNav(){document.getElementById('nav').innerHTML=navs[state.role].map(x=>`<button class="nav ${x===state.page?'active':''}" onclick="go('${x}')"><span class="txt">${x}</span></button>`).join('');document.getElementById('roleName').textContent=state.role.toUpperCase()+" PORTAL";document.getElementById('userName').textContent=state.user||DB[state.role].name;document.getElementById('notifyCount').textContent=state.notifications.filter(n=>!n.read).length||""}
 function go(page){state.page=page;renderNav();document.getElementById('pageTitle').textContent=page;document.getElementById('subtitle').textContent=subtitle(page);document.getElementById('view').innerHTML=views[page]?views[page]():empty(page);window.scrollTo(0,0)}
 function subtitle(p){return {Dashboard:"Your overview and recent activity","My Courses":"All courses available to you","Lessons":"Learning materials and progress","Assignments":"Create, submit and manage assignments","Quizzes":"Knowledge checks and assessments","Gradebook":"Assessment performance and results"}[p]||"Gbekor SHS Learning Management System"}
@@ -94,7 +195,7 @@ const courseCard=c=>`<div class="card"><div class="course"><div class="icon">�
 const views={
 "Dashboard":()=>dashboard(),
 "My Courses":()=>`<div class="toolbar"><input placeholder="Search courses" oninput="searchCourses(this.value)"><button class="btn gold" onclick="toast('Course enrollment request sent')">+ Enroll in Course</button></div><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))" id="courseGrid">${DB.student.courses.map(courseCard).join('')}</div>`,
-"Lessons":()=>`<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(290px,1fr))">${DB.student.courses.map(c=>`<div class="card"><h3>${c.title}</h3><ul class="list"><li><span>1. Introduction</span><span class="badge green">Completed</span></li><li><span>2. Core Concepts</span><span class="badge green">Completed</span></li><li><span>3. Practical Activity</span><button class="btn light" onclick="toast('Lesson opened')">Open</button></li><li><span>4. Assessment</span><span class="badge amber">Locked</span></li></ul></div>`).join('')}</div>`,
+"Lessons":()=>`<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(290px,1fr))">${lessonCards()}</div>`,
 "Assignments":()=>assignments(),
 "Quizzes":()=>quizList(),
 "Scenario Lab":()=>scenario(),
@@ -120,6 +221,12 @@ function stat(a,b,c){return `<div class="card stat"><small class="muted">${a}</s
 function table(head,rows){return `<table><thead><tr>${head.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('')}</tbody></table>`}
 function searchCourses(q){q=q.toLowerCase();document.getElementById('courseGrid').innerHTML=DB.student.courses.filter(c=>c.title.toLowerCase().includes(q)).map(courseCard).join('')}
 function openCourse(id){let c=DB.student.courses.find(x=>x.id===id);modal(`<h2>${c.title}</h2><p class="muted">${c.teacher}</p><div class="progress"><span style="width:${c.progress}%"></span></div><h3>Course Content</h3><ul class="list"><li>Welcome & Course Orientation <button class="btn light" onclick="toast('Lesson opened')">Open</button></li><li>Unit 1: Introduction <span class="badge green">Completed</span></li><li>Unit 2: Practical Skills <button class="btn light" onclick="toast('Lesson opened')">Open</button></li><li>Unit Quiz <button class="btn" onclick="closeModal();go('Quizzes')">Take Quiz</button></li></ul>`)}
+function lessonCards(){const data=[
+{course:"Information & Communication Technology",items:[["Computer Hardware and Software","Understand input, processing, output and storage devices."],["Word Processing","Create and format documents using Microsoft Word."],["Computer Networks","Explain LAN, WAN, network devices and internet services."],["Cyber Safety","Use strong passwords, recognize phishing and protect personal data."]]},
+{course:"Core Mathematics",items:[["Algebraic Expressions","Simplify and evaluate algebraic expressions."],["Linear Equations","Solve equations and apply them to real-life problems."],["Statistics","Interpret tables, charts, mean, median and mode."]]},
+{course:"English Language",items:[["Comprehension","Read, identify main ideas and support answers with evidence."],["Essay Writing","Plan, draft and revise a clear structured essay."],["Grammar and Usage","Apply correct sentence structure and punctuation."]]},
+{course:"Integrated Science",items:[["Scientific Method","Ask questions, form hypotheses and test ideas."],["Ecosystems","Explain relationships among organisms and their environment."],["Human Health","Describe nutrition, hygiene and disease prevention."]]}
+];return data.map(c=>`<div class="card"><h3>${c.course}</h3><ul class="list">${c.items.map((x,i)=>`<li><span><b>${i+1}. ${x[0]}</b><br><small class="muted">${x[1]}</small></span><button class="btn light" onclick="modal('<h2>${x[0]}</h2><p>${x[1]}</p><p>This lesson contains key notes, examples and a practical activity for students.</p>')">Open</button></li>`).join('')}</ul></div>`).join('')} 
 function assignments(){let items=[["ICT Computer Networks","Friday, 29 Aug","Pending"],["English Essay: Technology","28 Aug","Submitted"],["Mathematics Algebra Exercise","2 Sep","Pending"]];if(state.role==="teacher"||state.role==="admin")return `<div class="toolbar"><button class="btn gold" onclick="assignmentForm()">+ Create Assignment</button><button class="btn light" onclick="toast('Assignment report exported')">Export</button></div><div class="card">${table(["Title","Due Date","Submissions","Action"],[["ICT Computer Networks","29 Aug","31/42","Grade"],["Word Processing Project","3 Sep","18/42","View"],["Digital Safety Poster","10 Sep","0/42","Edit"]].map(r=>[...r.slice(0,3),`<button class='btn light' onclick="toast('${r[3]} opened')">${r[3]}</button>`]))}</div>`;return `<div class="toolbar"><button class="btn gold" onclick="go('My Courses')">Browse Courses</button></div><div class="card">${table(["Assignment","Due","Status","Action"],items.map(r=>[r[0],r[1],`<span class="badge ${r[2]==="Submitted"?"green":"amber"}">${r[2]}</span>`,`<button class="btn light" onclick="submitAssignment('${r[0]}')">${r[2]==="Submitted"?"View":"Submit"}</button>`]))}</div>`}
 function assignmentForm(){modal(`<h2>Create Assignment</h2><div class="form-grid"><div><label>Title</label><input id="atitle"></div><div><label>Course</label><select><option>ICT</option><option>Mathematics</option><option>English</option></select></div></div><label>Instructions</label><textarea rows="5"></textarea><label>Due Date</label><input type="date"><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('Assignment created successfully')">Publish Assignment</button>`)}
 function submitAssignment(x){modal(`<h2>Submit: ${x}</h2><p>Upload your completed work. This demo stores no actual file yet.</p><input type="file"><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('Assignment submitted successfully')">Submit Work</button>`)}
@@ -142,11 +249,11 @@ function showCertificate(){modal(`<div class="certificate"><img src="gbekor-logo
 function calendar(){let days=Array.from({length:31},(_,i)=>i+1);return `<div class="card"><div class="section-title"><h2>August 2026</h2><div><button class="btn light">‹</button> <button class="btn light">›</button></div></div><div class="calendar">${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(x=>`<b style="padding:8px">${x}</b>`).join('')}${days.map(d=>`<div class="day"><b>${d}</b>${({24:"ICT Quiz",28:"Essay Due",29:"Networks Assignment"}[d]||"").split("|").filter(Boolean).map(e=>`<div class="event">${e}</div>`).join('')}</div>`).join('')}</div></div>`}
 function notifications(){state.notifications.forEach(n=>n.read=true);renderNav();return `<div class="card">${state.notifications.map(n=>`<div class="list"><li><div><b>${n.title}</b><br><span class="muted">${n.text}</span></div><span class="badge ${n.read?'green':'amber'}">${n.read?'Read':'New'}</span></li></div>`).join('')}</div>`}
 function openNotifications(){go("Notifications")}
-function profile(){return `<div class="grid cols"><div class="card"><h2>My Profile</h2><label>Full Name</label><input value="${esc(state.user||DB[state.role].name)}"><label>Email</label><input value="user@gbekorshs.edu.gh"><label>Phone</label><input placeholder="Add phone number"><button class="btn gold" style="margin-top:15px" onclick="toast('Profile saved')">Save Changes</button></div><div class="card"><h2>Account</h2><p><b>Role:</b> ${state.role}</p><p><b>Status:</b> Active</p><button class="btn light" onclick="toast('Password reset link would be sent here')">Change Password</button></div></div>`}
+function profile(){return `<div class="grid cols"><div class="card"><h2>My Profile</h2><label>Full Name</label><input id="profileName" value="${esc(state.user||DB[state.role].name)}"><label>Email</label><input value="${esc(state.email||'')}" readonly><label>Role</label><input value="${esc(state.role)}" readonly><button class="btn gold" style="margin-top:15px" onclick="saveProfile()">Save Changes</button></div><div class="card"><h2>Account Security</h2><p><b>Status:</b> Active</p><p>Your password is managed securely through your LMS account.</p><button class="btn light" onclick="changePassword()">Change Password</button></div></div>`}
 function students(){return `<div class="toolbar"><input placeholder="Search student" oninput="filterRows(this.value)"><button class="btn gold" onclick="toast('Student enrollment opened')">+ Add Student</button></div><div class="card" id="dataTable">${table(["Student","Course","Progress","Status"],[["Ama Mensah","ICT","86%","Active"],["Kofi Asare","ICT","72%","Active"],["Yaw Doe","ICT","41%","At Risk"],["Esi D.","ICT","93%","Active"]].map(r=>[r[0],r[1],r[2],`<span class='badge ${r[3]==='At Risk'?'red':'green'}'>${r[3]}</span>`]))}</div>`}
 function filterRows(q){document.querySelectorAll('#dataTable tbody tr').forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q.toLowerCase())?'':'none')}
 function users(){return `<div class="toolbar"><input placeholder="Search users" oninput="filterRows(this.value)"><button class="btn gold" onclick="userForm()">+ Add User</button></div><div class="card" id="dataTable">${table(["Name","Role","Email","Status","Action"],[["Ama Mensah","Student","ama@school.edu","Active","Edit"],["Mr. Dennis Adzabe","Teacher","dennis@school.edu","Active","Edit"],["System Admin","Admin","admin@school.edu","Active","Edit"]].map(r=>[...r.slice(0,4),`<button class='btn light' onclick="toast('User editor opened')">Edit</button>`]))}</div>`}
-function userForm(){modal(`<h2>Add User</h2><div class="form-grid"><div><label>Full Name</label><input></div><div><label>Role</label><select><option>Student</option><option>Teacher</option><option>Admin</option></select></div></div><label>Email</label><input type="email"><label>Temporary Password</label><input type="password"><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('User created successfully')">Create User</button>`)}
+function userForm(){modal(`<h2>User Registration</h2><p>Students, teachers and administrators can now create their own secure accounts from the LMS sign-in page.</p><p>Each user chooses an email and password and then signs in with those credentials.</p><button class="btn gold" onclick="closeModal();logout()">Open Registration</button>`)}
 function adminCourses(){return `<div class="toolbar"><button class="btn gold" onclick="courseForm()">+ Create Course</button></div><div class="card">${table(["Course","Department","Teacher","Students","Status"],[["ICT","Science","Dennis Adzabe","124","Active"],["Core Mathematics","Mathematics","Math Dept","132","Active"],["English Language","Languages","English Dept","128","Active"]])}</div>`}
 function courseForm(){modal(`<h2>Create Course</h2><label>Course Title</label><input><div class="form-grid"><div><label>Department</label><select><option>Science</option><option>Mathematics</option><option>Languages</option></select></div><div><label>Teacher</label><input placeholder="Assign teacher"></div></div><label>Description</label><textarea rows="5"></textarea><button class="btn gold" style="margin-top:15px" onclick="closeModal();toast('Course created')">Create Course</button>`)}
 function departments(){return `<div class="card">${table(["Department","Courses","Teachers","Action"],[["Science & ICT","8","9","Manage"],["Mathematics","5","6","Manage"],["Languages","6","7","Manage"],["Visual Arts","4","5","Manage"]].map(r=>[...r.slice(0,3),`<button class='btn light' onclick="toast('${r[0]} opened')">${r[3]}</button>`]))}</div>`}
