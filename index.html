@@ -12,7 +12,7 @@
 #portal{display:flex;min-height:100vh}.sidebar{width:255px;background:var(--primary2);color:#fff;padding:20px 14px;position:sticky;top:0;height:100vh}.brand{padding:10px 12px 24px;border-bottom:1px solid #ffffff22;margin-bottom:15px}.brand b{display:block;font:700 20px Georgia}.brand span{font-size:11px;letter-spacing:1.5px;color:#f0d58d}.nav{width:100%;border:0;background:transparent;color:#eadde0;padding:11px 13px;text-align:left;border-radius:8px;cursor:pointer;margin:2px 0}.nav:hover,.nav.active{background:#ffffff16;color:#fff}.nav.active{border-left:3px solid var(--gold);font-weight:bold}.userbox{position:absolute;bottom:18px;left:14px;right:14px;padding:12px;background:#ffffff12;border-radius:10px}.userbox small{color:#ddcbd0;display:block;margin-bottom:7px}.content{flex:1;padding:26px 32px;max-width:1400px}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.topbar h1{margin:0;font-family:Georgia,serif}.topbar .role{color:var(--muted);font-size:13px}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,1fr)}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}.stat strong{display:block;font:700 32px Georgia;color:var(--primary);margin:7px 0}.muted{color:var(--muted)}.hero{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;padding:28px;border-radius:16px;margin-bottom:18px}.hero h2{font:700 28px Georgia;margin:0 0 8px}.cols{grid-template-columns:1.45fr 1fr}.course{display:flex;gap:15px;align-items:center}.icon{width:52px;height:52px;border-radius:12px;background:#f3e4bd;display:grid;place-items:center;font-size:24px}.course h3{margin:0}.course p{margin:6px 0;color:var(--muted);font-size:13px}.progress{height:9px;background:#e9e1d3;border-radius:10px;overflow:hidden;margin-top:12px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--gold));border-radius:10px}.list{padding:0;margin:0;list-style:none}.list li{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}.badge{padding:4px 8px;border-radius:20px;font-size:11px;font-weight:bold;white-space:nowrap}.green{background:#dff1e8;color:var(--green)}.amber{background:#f8edd5;color:#96631a}.red{background:#f7e1e3;color:var(--danger)}.blue{background:#e2edf9;color:var(--blue)}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}th{font-size:11px;color:var(--muted);text-transform:uppercase}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.toolbar input{max-width:330px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.empty{text-align:center;padding:50px;color:var(--muted)}.quiz-option{display:block;padding:12px;border:1px solid var(--line);border-radius:9px;margin:8px 0;cursor:pointer}.quiz-option:hover{background:#faf3e4}.notice{padding:12px;border-left:4px solid var(--gold);background:#fff8e8;margin:10px 0}.certificate{border:8px double var(--gold);padding:42px;text-align:center;background:#fffaf0}.certificate h1{font:700 38px Georgia;color:var(--primary)}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.day{min-height:86px;padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff}.event{font-size:11px;background:#f3e4bd;color:var(--primary);padding:4px;border-radius:4px;margin-top:5px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.modal{position:fixed;inset:0;background:#0008;display:grid;place-items:center;padding:20px;z-index:20}.modalbox{width:650px;max-width:100%;max-height:90vh;overflow:auto;background:var(--card);padding:24px;border-radius:14px}.toast{position:fixed;right:20px;bottom:20px;background:#263d32;color:#fff;padding:14px 18px;border-radius:9px;box-shadow:var(--shadow);z-index:30}
 @media(max-width:950px){.sidebar{width:220px}.stats{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}@media(max-width:680px){.sidebar{width:62px;padding:12px 6px}.brand b,.brand span,.nav .txt,.userbox{display:none}.content{padding:18px}.nav{text-align:center}.stats{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.topbar h1{font-size:23px}}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
 <body>
 <div id="login">
@@ -30,12 +30,12 @@
         <option value="teacher">Teacher</option>
         <option value="admin">Administrator</option>
       </select>
-      <label>Email Address</label>
-      <input id="loginEmail" type="email" placeholder="Enter your email" autocomplete="email">
+      <label>Email or Username</label>
+      <input id="loginEmail" type="text" placeholder="First login: admin" autocomplete="username">
       <label>Password</label>
-      <input id="loginPassword" type="password" placeholder="Enter your password" autocomplete="current-password">
+      <input id="loginPassword" type="password" placeholder="First login: admin" autocomplete="current-password">
       <button class="btn gold" onclick="login()">Sign in to selected portal</button>
-      <p style="font-size:13px;margin-top:16px">New to the LMS? <button class="btn light" style="padding:7px 10px" onclick="showRegister()">Create your account</button></p>
+      <p class="muted" style="font-size:13px;margin-top:16px">Default first access: email/username <b>admin</b> • password <b>admin</b>. After signing in, create your own username and password in <b>Profile</b>.</p>
     </div>
 
     <div id="authRegister" class="hidden">
@@ -54,7 +54,7 @@
       <input id="registerPassword" type="password" placeholder="Create a password" autocomplete="new-password">
       <label>Confirm Password</label>
       <input id="registerConfirm" type="password" placeholder="Confirm your password" autocomplete="new-password">
-      <button class="btn gold" onclick="registerAccount()">Create Account</button>
+      <button class="btn gold" onclick="showLogin()">Return to Sign In</button>
       <p style="font-size:13px;margin-top:16px">Already have an account? <button class="btn light" style="padding:7px 10px" onclick="showLogin()">Sign in</button></p>
     </div>
   </div>
@@ -95,10 +95,6 @@ teacher:["Dashboard","My Courses","Lessons","Assignments","Quizzes","Students","
 admin:["Dashboard","Users","Courses","Departments","Enrollments","Assignments","Quizzes","Results","Certificates","Calendar","Announcements","Settings","Reports"]
 };
 function esc(s){return String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
-const SUPABASE_URL="https://xqvqavdnhkvpigcezrsd.supabase.co";
-const SUPABASE_KEY="sb_publishable_ESbBPXMfnjir3EH2eS6Kgw_PEi2cZ9f";
-const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-
 function showRegister(){
   document.getElementById('authLogin').classList.add('hidden');
   document.getElementById('authRegister').classList.remove('hidden');
@@ -107,86 +103,66 @@ function showLogin(){
   document.getElementById('authRegister').classList.add('hidden');
   document.getElementById('authLogin').classList.remove('hidden');
 }
-async function registerAccount(){
-  const name=document.getElementById('registerName').value.trim();
-  const email=document.getElementById('registerEmail').value.trim().toLowerCase();
-  const role=document.getElementById('registerRole').value;
-  const password=document.getElementById('registerPassword').value;
-  const confirm=document.getElementById('registerConfirm').value;
-  if(!name||!email||!password||!confirm){alert('Please complete all fields.');return}
-  if(password.length<6){alert('Password must be at least 6 characters.');return}
-  if(password!==confirm){alert('Passwords do not match.');return}
-  const {data,error}=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name,role}}});
-  if(error){alert('Account creation failed: '+error.message);return}
-  if(data.session){
-    const {data:profileCheck}=await supabaseClient.from('profiles').select('*').eq('id',data.user.id).single();
-    if(!profileCheck){
-      alert('Your account was created, but the LMS profile is not ready yet. Run the included SQL fix, then sign in again.');
-      await supabaseClient.auth.signOut();
-      showLogin();
-      return;
-    }
-    await supabaseClient.auth.signOut();
-    alert('Account created successfully. Now select your role, enter your email and password, and sign in.');
-    showLogin();
-  }else{
-    alert('Account created successfully. Check your email and confirm the account, then select your role and sign in.');
-    showLogin();
-  }
-}
-async function login(){
-  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
-  const password=document.getElementById('loginPassword').value;
-  const selectedRole=document.getElementById('loginRole').value;
-  if(!email||!password){alert('Enter your email and password.');return}
-  const {data,error}=await supabaseClient.auth.signInWithPassword({email,password});
-  if(error){
-    let msg=error.message||'Unknown error';
-    if(/email not confirmed/i.test(msg)) msg='Your account was created, but your email has not been confirmed. Check your email inbox and spam folder for the confirmation link, then sign in again.';
-    alert('Sign-in failed: '+msg);
-    return;
-  }
-  let {data:profile,error:profileError}=await supabaseClient.from('profiles').select('*').eq('id',data.user.id).single();
-  if(profileError||!profile){
-    const fallbackRole=data.user.user_metadata?.role||'student';
-    const fallbackName=data.user.user_metadata?.full_name||email.split('@')[0];
-    const up=await supabaseClient.from('profiles').upsert({id:data.user.id,full_name:fallbackName,role:fallbackRole},{onConflict:'id'}).select().single();
-    if(up.error){alert('Your account is valid but your LMS profile is missing. Please run the included profile policy SQL.');await supabaseClient.auth.signOut();return}
-    profile=up.data;
-  }
-  if(profile.role!==selectedRole){await supabaseClient.auth.signOut();alert('This account is registered as '+profile.role+'. Please select the correct portal before signing in.');return}
-  state.role=profile.role;state.user=profile.full_name;state.email=email;state.userId=data.user.id;
-  enterPortal();
-}
+function registerAccount(){alert("Please sign in with admin/admin first, then create your own login from Profile.");showLogin();}
 function enterPortal(){
   document.getElementById('login').classList.add('hidden');
   document.getElementById('portal').classList.remove('hidden');
   state.page='Dashboard';renderNav();go('Dashboard');
 }
-async function logout(){
-  await supabaseClient.auth.signOut();
+function changePassword(){const p=prompt("Create a new password:");if(p&&p.length>=4){const a=getLocalAccount();a.password=p;localStorage.setItem("gbekorLmsAccount",JSON.stringify(a));toast("Password updated successfully.");}}
+function saveProfile(){const name=document.getElementById("profileName")?.value.trim();if(name){state.user=name;const a=getLocalAccount();a.full_name=name;localStorage.setItem("gbekorLmsAccount",JSON.stringify(a));renderNav();toast("Profile saved successfully.");}}
+
+function getLocalAccount(){
+  try{return JSON.parse(localStorage.getItem('gbekorLmsAccount')||'{}')}catch(e){return {}}
+}
+function createLocalAccount(){
+  const username=(document.getElementById('profileUsername')?.value||'').trim().toLowerCase();
+  const email=(document.getElementById('profileEmail')?.value||'').trim().toLowerCase();
+  const password=document.getElementById('newLocalPassword')?.value||'';
+  const confirm=document.getElementById('confirmLocalPassword')?.value||'';
+  if(!username && !email){alert('Create a username or add an email address.');return}
+  if(password.length<4){alert('Password must contain at least 4 characters.');return}
+  if(password!==confirm){alert('Passwords do not match.');return}
+  const account={username,email,password,role:state.role,full_name:state.user||'LMS User'};
+  localStorage.setItem('gbekorLmsAccount',JSON.stringify(account));
+  state.email=email||username;
+  toast('Your personal LMS login has been created. You can now sign out and use it to log in.');
+}
+function saveProfile(){
+  const name=document.getElementById('profileName')?.value.trim();
+  if(!name){alert('Enter your full name.');return}
+  state.user=name;
+  const account=getLocalAccount();
+  if(account.username||account.email){
+    account.full_name=name;
+    localStorage.setItem('gbekorLmsAccount',JSON.stringify(account));
+  }
+  renderNav();toast('Profile saved successfully.');
+}
+function login(){
+  const role=document.getElementById('loginRole')?.value;
+  const identifier=(document.getElementById('loginEmail')?.value||'').trim().toLowerCase();
+  const password=document.getElementById('loginPassword')?.value||'';
+  if(!role){alert('Please select Student, Teacher or Administrator first.');return}
+  const account=getLocalAccount();
+  const isDefault=identifier==='admin' && password==='admin';
+  const isPersonal=account.password===password && account.role===role &&
+    (identifier===account.username || (account.email && identifier===account.email));
+  if(!isDefault && !isPersonal){
+    alert('Login failed. Use admin/admin for first access, or use the username/email and password created in your LMS Profile.');
+    return;
+  }
+  state.role=role;
+  state.user=isPersonal ? (account.full_name||account.username||'LMS User') : 'Administrator';
+  state.email=isPersonal ? (account.email||account.username) : 'admin';
+  state.userId='local-user';
+  enterPortal();
+}
+function logout(){
   document.getElementById('portal').classList.add('hidden');
   document.getElementById('login').classList.remove('hidden');
   document.getElementById('loginPassword').value='';
 }
-async function changePassword(){
-  const current=prompt('Enter your new password (minimum 6 characters):');
-  if(!current)return;
-  if(current.length<6){alert('Password must be at least 6 characters.');return}
-  const {error}=await supabaseClient.auth.updateUser({password:current});
-  if(error)alert('Password update failed: '+error.message);
-  else toast('Password changed successfully.');
-}
-async function saveProfile(){
-  const name=document.getElementById('profileName').value.trim();
-  if(!name){alert('Enter your name.');return}
-  const {error}=await supabaseClient.from('profiles').update({full_name:name}).eq('id',state.userId);
-  if(error){alert('Could not save profile: '+error.message);return}
-  state.user=name;renderNav();toast('Profile saved successfully.');
-}
-supabaseClient.auth.onAuthStateChange(async (event,session)=>{
-  if(event==='SIGNED_OUT') return;
-});
 function renderNav(){document.getElementById('nav').innerHTML=navs[state.role].map(x=>`<button class="nav ${x===state.page?'active':''}" onclick="go('${x}')"><span class="txt">${x}</span></button>`).join('');document.getElementById('roleName').textContent=state.role.toUpperCase()+" PORTAL";document.getElementById('userName').textContent=state.user||DB[state.role].name;document.getElementById('notifyCount').textContent=state.notifications.filter(n=>!n.read).length||""}
 function go(page){state.page=page;renderNav();document.getElementById('pageTitle').textContent=page;document.getElementById('subtitle').textContent=subtitle(page);document.getElementById('view').innerHTML=views[page]?views[page]():empty(page);window.scrollTo(0,0)}
 function subtitle(p){return {Dashboard:"Your overview and recent activity","My Courses":"All courses available to you","Lessons":"Learning materials and progress","Assignments":"Create, submit and manage assignments","Quizzes":"Knowledge checks and assessments","Gradebook":"Assessment performance and results"}[p]||"Gbekor SHS Learning Management System"}
@@ -249,7 +225,25 @@ function showCertificate(){modal(`<div class="certificate"><img src="gbekor-logo
 function calendar(){let days=Array.from({length:31},(_,i)=>i+1);return `<div class="card"><div class="section-title"><h2>August 2026</h2><div><button class="btn light">‹</button> <button class="btn light">›</button></div></div><div class="calendar">${["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(x=>`<b style="padding:8px">${x}</b>`).join('')}${days.map(d=>`<div class="day"><b>${d}</b>${({24:"ICT Quiz",28:"Essay Due",29:"Networks Assignment"}[d]||"").split("|").filter(Boolean).map(e=>`<div class="event">${e}</div>`).join('')}</div>`).join('')}</div></div>`}
 function notifications(){state.notifications.forEach(n=>n.read=true);renderNav();return `<div class="card">${state.notifications.map(n=>`<div class="list"><li><div><b>${n.title}</b><br><span class="muted">${n.text}</span></div><span class="badge ${n.read?'green':'amber'}">${n.read?'Read':'New'}</span></li></div>`).join('')}</div>`}
 function openNotifications(){go("Notifications")}
-function profile(){return `<div class="grid cols"><div class="card"><h2>My Profile</h2><label>Full Name</label><input id="profileName" value="${esc(state.user||DB[state.role].name)}"><label>Email</label><input value="${esc(state.email||'')}" readonly><label>Role</label><input value="${esc(state.role)}" readonly><button class="btn gold" style="margin-top:15px" onclick="saveProfile()">Save Changes</button></div><div class="card"><h2>Account Security</h2><p><b>Status:</b> Active</p><p>Your password is managed securely through your LMS account.</p><button class="btn light" onclick="changePassword()">Change Password</button></div></div>`}
+function profile(){
+  const account=JSON.parse(localStorage.getItem('gbekorLmsAccount')||'{}');
+  return `<div class="grid cols">
+    <div class="card"><h2>My Profile</h2>
+      <label>Full Name</label><input id="profileName" value="${esc(state.user||DB[state.role].name)}">
+      <label>Username</label><input id="profileUsername" value="${esc(account.username||'')}" placeholder="Create your username">
+      <label>Email</label><input id="profileEmail" value="${esc(account.email||'')}" placeholder="Optional email address">
+      <label>Role</label><input value="${esc(state.role)}" readonly>
+      <button class="btn gold" style="margin-top:15px" onclick="saveProfile()">Save Profile</button>
+    </div>
+    <div class="card"><h2>My Login Account</h2>
+      <p>Create your personal LMS login details. After saving, you can sign out and log in with your selected role and your new username or email.</p>
+      <label>New Password</label><input id="newLocalPassword" type="password" placeholder="Create a new password">
+      <label>Confirm New Password</label><input id="confirmLocalPassword" type="password" placeholder="Confirm your new password">
+      <button class="btn gold" style="margin-top:15px" onclick="createLocalAccount()">Create / Update My Login</button>
+      <p class="muted" style="margin-top:12px">Your account is stored on this device in this LMS version.</p>
+    </div>
+  </div>`
+}
 function students(){return `<div class="toolbar"><input placeholder="Search student" oninput="filterRows(this.value)"><button class="btn gold" onclick="toast('Student enrollment opened')">+ Add Student</button></div><div class="card" id="dataTable">${table(["Student","Course","Progress","Status"],[["Ama Mensah","ICT","86%","Active"],["Kofi Asare","ICT","72%","Active"],["Yaw Doe","ICT","41%","At Risk"],["Esi D.","ICT","93%","Active"]].map(r=>[r[0],r[1],r[2],`<span class='badge ${r[3]==='At Risk'?'red':'green'}'>${r[3]}</span>`]))}</div>`}
 function filterRows(q){document.querySelectorAll('#dataTable tbody tr').forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q.toLowerCase())?'':'none')}
 function users(){return `<div class="toolbar"><input placeholder="Search users" oninput="filterRows(this.value)"><button class="btn gold" onclick="userForm()">+ Add User</button></div><div class="card" id="dataTable">${table(["Name","Role","Email","Status","Action"],[["Ama Mensah","Student","ama@school.edu","Active","Edit"],["Mr. Dennis Adzabe","Teacher","dennis@school.edu","Active","Edit"],["System Admin","Admin","admin@school.edu","Active","Edit"]].map(r=>[...r.slice(0,4),`<button class='btn light' onclick="toast('User editor opened')">Edit</button>`]))}</div>`}
@@ -266,5 +260,45 @@ function reports(){return `<div class="grid stats">${stat("Completion Rate","74%
 function modal(html){document.getElementById('modalRoot').innerHTML=`<div class="modal" onclick="if(event.target===this)closeModal()"><div class="modalbox">${html}<button class="btn light" style="margin-top:16px" onclick="closeModal()">Close</button></div></div>`}
 function closeModal(){document.getElementById('modalRoot').innerHTML=""}
 function toast(msg){document.getElementById('toastRoot').innerHTML=`<div class="toast">${msg}</div>`;setTimeout(()=>document.getElementById('toastRoot').innerHTML="",2600)}
+</script>
+
+<script>
+function changePassword(){
+  const p=prompt("Create a new password (minimum 4 characters):");
+  if(!p)return;
+  if(p.length<4){alert("Password must be at least 4 characters.");return;}
+  const a=getLocalAccount();
+  if(!a.username&&!a.email){alert("Please create your username or email in Profile first.");return;}
+  a.password=p;
+  localStorage.setItem("gbekorLmsAccount",JSON.stringify(a));
+  toast("Password updated successfully.");
+}
+function saveProfile(){
+  const name=document.getElementById("profileName")?.value.trim();
+  if(!name){alert("Enter your full name.");return;}
+  state.user=name;
+  const a=getLocalAccount();
+  a.full_name=name;
+  localStorage.setItem("gbekorLmsAccount",JSON.stringify(a));
+  renderNav();toast("Profile saved successfully.");
+}
+function login(){
+  const role=document.getElementById("loginRole")?.value;
+  const identifier=(document.getElementById("loginEmail")?.value||"").trim().toLowerCase();
+  const password=document.getElementById("loginPassword")?.value||"";
+  const a=getLocalAccount();
+  const isDefault=identifier==="admin" && password==="admin";
+  const isPersonal=!!a.password && password===a.password && a.role===role &&
+    (identifier===a.username || (!!a.email && identifier===a.email));
+  if(!isDefault&&!isPersonal){
+    alert("Login failed. First access uses username/email: admin and password: admin. For a personal account, use the username/email and password created in Profile.");
+    return;
+  }
+  state.role=role;
+  state.user=isPersonal?(a.full_name||a.username||"LMS User"):"Administrator";
+  state.email=isPersonal?(a.email||a.username):"admin";
+  state.userId="local-user";
+  enterPortal();
+}
 </script>
 </body></html>
